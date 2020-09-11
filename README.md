@@ -2,4 +2,4 @@
 
 # retro-modern
 
-A theme for Style Stage paying tribute to old timey computer UIs with modern CSS features.
+A theme for [Style Stage](https://stylestage.dev/) paying tribute to old timey computer UIs with modern CSS features.
