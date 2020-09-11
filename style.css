@@ -85,6 +85,7 @@ body {
   text-shadow: 1px 1px 1px rgba(255,255,255,.5);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: .5rem;
 }
 
 /* Based on Alec Lownes' "Using CSS to Create a CRT"
@@ -131,7 +132,7 @@ ol li:not(:last-child) {
 }
 
 .link-github {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   line-height: 1;
 }
@@ -167,7 +168,7 @@ main section:not(:last-child) {
 }
 
 main .container > *,
-.page-footer .container > *  {
+.page-footer .container > *:not(:last-child)  {
   margin-bottom: 1rem;
 }
 
@@ -178,6 +179,7 @@ main .container > *,
 nav {
   grid-area: nav;
   padding: .75rem;
+  overflow: auto;
 }
 
 nav ul {
@@ -248,44 +250,60 @@ blockquote strong {
   display: block;
 }
 
-@media (min-width: 600px) {
-
-  html {
-    overflow: hidden;
-  }
+@media (min-width: 760px) {
 
   body {
-    max-height: 100vh;
     display: grid;
     grid-gap: .5rem;
-    grid-template-columns: 1.5fr 6fr 2.5fr;
-    grid-template-rows:  auto repeat(2, 1fr) auto;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows:  auto auto auto auto auto 1fr;
     grid-template-areas:
-      "header header header"
-      "nav main current"
-      "nav main featured"
-      "footer footer footer";
+      "header header"
+      "nav main"
+      "current main"
+      "featured main"
+      "footer main"
+      ". main";
   }
 
   header .container {
-    columns: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
   }
 
-  header .link-github {
-    justify-content: right;
+  header h2 {
+    grid-column: 1;
+    grid-row: 2;
   }
 
-  header p,
-  header a {
+  header p {
     text-align: right;
   }
 
-  main {
-    overflow-y: scroll;
-    scrollbar-width: none;
+  header .link-github {
+    justify-self: right;
+    align-self: start;
   }
 
-  main::-webkit-scrollbar { display: none; }
+}
+
+@media (min-width: 1280px) {
+
+  body {
+    grid-template-columns: 1.5fr 6fr 2.5fr;
+    grid-template-rows:  auto auto auto 1fr auto;
+    grid-template-areas:
+      "header header header"
+      "nav main current"
+      ". main featured"
+      ". main ."
+      ". footer .";
+  }
+
+  .features {
+    display: block;
+  }
 
   .page-footer ul {
     display: flex;
@@ -296,4 +314,11 @@ blockquote strong {
     margin-right: 1rem;
   }
 
+}
+
+@media (min-width: 1440px) {
+  body {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 }
