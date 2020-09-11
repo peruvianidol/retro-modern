@@ -162,7 +162,7 @@ main .container {
 }
 
 main section:not(:last-child) {
-  border-bottom: 1px solid var(--color-green);
+  border-bottom: 2px solid var(--color-green);
   margin-bottom: 2rem;
   padding-bottom: 1rem;
 }
@@ -266,6 +266,10 @@ blockquote strong {
       ". main";
   }
 
+  body > :not(:last-child) {
+    margin-bottom: 0;
+  }
+  
   header .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
